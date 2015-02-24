@@ -1,0 +1,16 @@
+[
+{
+  "modid": "solarannihilation",
+  "name": "Solar Annihilation",
+  "description": "Makes surviving outside difficult.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["PbJBOSS"],
+  "credits": "saxmaster98",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
