@@ -2,9 +2,11 @@ package com.pbjboss.solarannihilation;
 
 import com.pbjboss.solarannihilation.configuration.ConfigurationHandler;
 import com.pbjboss.solarannihilation.handler.EventHandler;
+import com.pbjboss.solarannihilation.handler.EventHandlerMF;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Created by PbJBOSS on 2/23/2015.
@@ -23,6 +25,7 @@ class SolarAnnihilation
     {
         //Register main mod event handler
         FMLCommonHandler.instance().bus().register(new EventHandler());
+        MinecraftForge.EVENT_BUS.register(new EventHandlerMF());
         ConfigurationHandler.load(event.getSuggestedConfigurationFile());
     }
 }

@@ -13,10 +13,23 @@ class Util
 {
     public static boolean shouldPlayerBurn(EntityPlayer player)
     {
-
         //Make sure the player is not in creative or the time is not day
         if (player.capabilities.isCreativeMode || !player.worldObj.isDaytime())
             return false;
+
+        for (int slotIndex = 39; slotIndex > 36; slotIndex--)
+        {
+            if (player.inventory.getStackInSlot(slotIndex) == null)
+                break;
+
+            for (int i = 0; i < ConfigurationHandler.armorProtectionList.length; i++)
+            {
+                if (player.inventory.getStackInSlot(slotIndex).getItem().getUnlocalizedName().equals(ConfigurationHandler.armorProtectionList[i]))
+                {
+                    return false;
+                }
+            }
+        }
 
         //Check for blocks above the player
         for (int y = (int) player.posY + 1; y < player.worldObj.provider.getActualHeight(); y++)

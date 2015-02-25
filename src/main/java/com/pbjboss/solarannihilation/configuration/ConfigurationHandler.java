@@ -14,7 +14,8 @@ class ConfigurationHandler
 {
     public static int damageInterval;
     public static float damagePerInterval;
-    public static boolean warnPlayerOnJoin;
+    public static String[] armorProtectionList;
+    public static boolean addUNToTooltip;
 
     public static
     Configuration config;
@@ -28,8 +29,9 @@ class ConfigurationHandler
             config.load();
 
             damagePerInterval = config.getFloat("damagePerInterval", Configuration.CATEGORY_GENERAL, 1F, .5F, 20F, "Amount of damage to do to a player every interval. 1 is half a heart");
-            damageInterval = config.getInt("damageInterval",Configuration.CATEGORY_GENERAL, 1, 1, 10, "Every x amount of seconds the player will take damage");
-            warnPlayerOnJoin = config.getBoolean("warnPlayerOnJoin", Configuration.CATEGORY_GENERAL, false, "Warn players that the mod is installed on the server");
+            damageInterval = config.getInt("damageInterval", Configuration.CATEGORY_GENERAL, 1, 1, 10, "Every x amount of seconds the player will take damage");
+            armorProtectionList = config.getStringList("armorProtectionList", Configuration.CATEGORY_GENERAL, new String[] {"item.infusedHelmetEpicFlight","item.infusedPlatebodyEpicFlight", "item.infusedLeggingsEpicFlight","item.infusedBootsEpicFlight"}, "A whitelist of armor pieces that protect the player from Solar Annihilation. Unlocalized names of items are case sensitive");
+            addUNToTooltip = config.getBoolean("addItemUnlocalizedNameToTooltip", Configuration.CATEGORY_GENERAL, false, "Adds the unlocalized name of items to their tooltip. Makes it easier to add armor to the whitelist.");
         }
         catch (Exception e)
         {
